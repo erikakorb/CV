@@ -46,14 +46,18 @@
 % Dependences
 %A Few Useful Packages
 \RequirePackage[english]{babel}
+\RequirePackage[en-GB]{datetime2}   % to remove month day
+\DTMlangsetup{showdayofmonth=false}
 \RequirePackage[utf8]{luainputenc}
 \RequirePackage{url,parskip} 	    % other packages for formatting
 \RequirePackage[usenames,dvipsnames]{xcolor}
 \RequirePackage{amsmath, amssymb, mathtools,bm}
 \RequirePackage{fullpage}
 \RequirePackage[margin=1.5cm]{geometry}
+\RequirePackage{setspace}  %for spacing in minipage
 \RequirePackage{fontspec} 					                 % for loading fonts
-\RequirePackage{fontawesome}  % fancy symbols and icons
+%\RequirePackage{fontawesome}  % fancy symbols and icons
+\RequirePackage{fontawesome5} % updated
 \RequirePackage{hyperref}
 \RequirePackage{titlesec}
 \RequirePackage{array}
@@ -148,12 +152,15 @@
 \newcommand{\mailSymbol}{\faAt}
 \newcommand{\locationSymbol}{\faMapMarker}
 \newcommand{\infoSymbol}{\faInfo}
+\newcommand{\birthSymbol}{\faBirthdayCake}
 \newcommand{\linkedinSymbol}{\faLinkedin}
 \newcommand{\viadeoSymbol}{\faViadeo}
 \newcommand{\mobileSymbol}{\faMobilePhone}
 \newcommand{\githubSymbol}{\faGithub}
 \newcommand{\gitlabSymbol}{\faGitlab}
-\newcommand{\linkSymbol}{\faChain}
+\newcommand{\linkSymbol}{\faLink}
+\newcommand{\pdfSymbol}{\faFilePdf}
+\newcommand{\codeSymbol}{\faCode}
 
 \newcommand\link[2]{\color{linkcolor}\href{#1}{#2}\color{Black} }
 \newcommand\important[1]{\textbf #1}
@@ -161,7 +168,7 @@
 % Create a tag
 % Usage: \cvtag{<tag label>}
 \newcommand{\cvtag}[1]{%
-  \tikz[baseline]\node[anchor=base,draw=darkGrey!70,rounded corners=0.5ex,inner xsep=1ex,inner ysep =0.55ex,text height=1.3ex,text depth=.25ex]{#1};
+  \tikz[baseline]\node[anchor=base,draw=white,rounded corners=0.5ex,inner xsep=1ex,inner ysep =0.7ex,text height=2ex,text depth=0.25ex]{#1};
 }
 
 % Render author's name
@@ -174,7 +181,7 @@
 
 % Render a link with its symbol
 % Usage; \sociallink{<icon>}{<label>}
-\newcommand{\sociallink}[3]{\mbox{\textcolor{symbolcolor}{#1}\hspace{0.5em}\link{#2}{#3}\hspace{1em}}}
+\newcommand{\sociallink}[3]{\mbox{\textcolor{symbolcolor}{#1}\hspace{0.5em}\link{#2}{#3}}}
 
 % Define author's name
 % Usage: \name{<firstname>}{<lastname>}
@@ -199,6 +206,10 @@
 % Usage: \address{<address>}
 \newcommand*{\address}[1]{\socialtext{\locationSymbol}{#1}}
 
+
+% Render author's birthdate
+% Usage: \birthdate{<birthdate>}
+\newcommand*{\birthdate}[1]{\socialtext{\birthSymbol}{#1}}
 % Render author's infos
 % Usage: \infos{<infos>}
 \newcommand*{\infos}[1]{\socialtext{\infoSymbol}{#1}}
@@ -209,7 +220,7 @@
 
 % Render author's personal website (optional)
 % Usage: \personalLink{<website-without-http://www.>}
-\newcommand*{\personalLink}[1]{\sociallink{\linkSymbol}{http://www.#1}{#1}}
+\newcommand*{\personalLink}[1]{\sociallink{\linkSymbol}{#1}{#1}}
 
 
 % Render author's viadeo(optional)
@@ -234,7 +245,15 @@
 
 % Render a website link (optional)
 % Usage: \email{<email adress>}
-\newcommand*{\website}[2]{\sociallink{\faChain}{#1}{#2}}
+\newcommand*{\website}[2]{\sociallink{\faLink}{#1}{#2}}
+
+% Render a link to a online pdf (optional)
+% Usage: \email{<email adress>}
+\newcommand*{\pdflink}[2]{\sociallink{\pdfSymbol}{#1}{#2}}
+
+% Render a link to a online code repository (optional)
+% Usage: \email{<email adress>}
+\newcommand*{\codelink}[2]{\sociallink{\codeSymbol}{#1}{#2}}
 
 % Render author's mobile phone (optional)
 % Usage: \smartphone{<mobile phone number>}
@@ -342,6 +361,12 @@
   \textsc{#1}    &  #2 \\
 }
 
+% Render a content in the contents environment
+% Usage: \content{<date>}{<description>}
+\newcommand\contentlink[3]{
+  \textsc{#1}    &  #2 \hfill \footnotesize{#3} \\
+}
+
 % Define the 'skills' environment
 \newenvironment{skills}{%
   \begin{longtable}{R{\leftcolumn}p{\rightcolumnlength}}
@@ -398,15 +423,40 @@
                    \end{minipage} \\
                    }
 
+\newcommand\experiencetags[7]{
+  \textsc{#1}    & \textbf{#2}, \textbf{#3}   \\
+  \textsc{#4}    & \begin{minipage}[t]{\rightcolumnlength}
+  					        #5
+                                \smallskip
+                                \textcolor{verydarkgray}{#6}
+                   \footnotesize{\foreach \n in {#7}{\cvtag{\n}}}
+                   \end{minipage} \\
+                   }
+
+
+\newcommand\experiencelink[7]{
+  \textsc{#1}    & \textbf{#2}, \textbf{#3}  \hfill \footnotesize{#4} \\
+  \textsc{#5}    & \begin{minipage}[t]{\rightcolumnlength}
+  					        #6
+                                \smallskip
+                                \textcolor{verydarkgray}{#7}
+                   \end{minipage} \\
+                   }
 
 \newcommand\award[5]{
-  \textsc{#1}    & \textbf{#2} by \textbf{#3}  \\
+  \textsc{#1}    & \textbf{#2} by the \textbf{#3}  \\
   \textsc{#4}    & \begin{minipage}[t]{\rightcolumnlength}
                     \vspace{-3.5mm}
   				\textcolor{verydarkgray}{#5}
                    \end{minipage}	\\
                    }
-
+\newcommand\awardlink[6]{
+  \textsc{#1}    & \textbf{#2} by the \textbf{#3} \hfill \footnotesize{#4}\\
+  \textsc{#5}    & \begin{minipage}[t]{\rightcolumnlength}
+                    \vspace{-3.5mm}
+  				\textcolor{verydarkgray}{#6}
+                   \end{minipage}	\\
+                   }
 
 \newcommand\outreach[4]{
   \textsc{#1}    & \textbf{#2}, \textbf{#3}  \\
@@ -416,12 +466,25 @@
                    \end{minipage}	\\
                    }
 
-\newcommand\publication[3]{
-  \textsc{#1}    & \textbf{#2}   								\\*
+\newcommand\teaching[5]{
+  \textsc{#1}    & \textbf{#2}  \\
+                 & \textit{#3,  #4} - #5
+                   }
+
+\newcommand\publicationtags[5]{
+  \textsc{#1}    & \textbf{#2}   	\\
                 & \begin{minipage}[t]{\rightcolumnlength}
-  					         #3
-                   \end{minipage}										\\
+                    \begin{spacing}{1}
+                        #3
+                    \end{spacing}
+                    \smallskip
+                    
+                        #4 \hfill 
+                    \footnotesize{\foreach \n in {#5}{\cvtag{\n}}}
+                    
+                   \end{minipage}				
                     }
+
 
 \newcommand\grant[8]{
   \textsc{#1}   &\textbf{#2} 	(\textbf{#3})	 								\\*
