@@ -146,7 +146,7 @@
 \setlength{\rightcolumnlength}{14.8cm}
 
 \newlength{\leftcolumn}
-\setlength{\leftcolumn}{2.5cm}
+\setlength{\leftcolumn}{3.2cm}
 
 % Font Awesome icons aliases
 \newcommand{\mailSymbol}{\faAt}
@@ -346,19 +346,56 @@
 
 % Define a new column type for the scholarship environment
 \newcolumntype{Y}{>{\raggedleft}p{\leftcolumn}}
+% recall definition in experiences environment
+%\newcolumntype{E}{>{\raggedright\arraybackslash}p{\rightcolumnlength}}
+
 
 % Define the 'contents' environment
 \newenvironment{contents}{%
 \renewcommand{\arraystretch}{1.3}
-  \begin{tabular}{Y p{\rightcolumnlength}}
+  \begin{longtable}{>{\raggedleft\arraybackslash}p{\leftcolumn}|p{\rightcolumnlength}}
 }{%
-  \end{tabular}
+  \end{longtable}
 }
+
+% Define the 'contents' environment
+\newenvironment{singlelines}{%
+\renewcommand{\arraystretch}{1.3}
+  \begin{longtable}{>{\raggedleft\arraybackslash}p{\leftcolumn}p{\rightcolumnlength}}
+}{%
+  \end{longtable}
+}
+
+% Define the 'contents' environment
+%\newenvironment{contents}{%
+%\renewcommand{\arraystretch}{1.1}
+%  \begin{longtable}{R{\leftcolumn}E}
+%}{%
+%  \end{longtable}
+%}
+
+% Define the 'contents' environment
+%\newenvironment{contents}{%
+%\renewcommand{\arraystretch}{1.3}
+%  \begin{tabular}{Y p{\rightcolumnlength}}
+%}{%
+%  \end{tabular}
+%}
 
 % Render a content in the contents environment
 % Usage: \content{<date>}{<description>}
 \newcommand\content[2]{
   \textsc{#1}    &  #2 \\
+}
+
+\newcommand\talk[5]{
+  \textsc{#1}    &  \textbf{#2} \\
+                 & \emph{#3}, #4  \hfill #5 \\
+}
+
+\newcommand\talklink[6]{
+  \textsc{#1}   &  \textbf{#2} \hfill \footnotesize{#3}\\
+                & \emph{#4}, #5  \hfill #6 \\
 }
 
 % Render a content in the contents environment
@@ -459,16 +496,24 @@
                    }
 
 \newcommand\outreach[4]{
-  \textsc{#1}    & \textbf{#2}, \textbf{#3}  \\
-                 & \begin{minipage}[t]{\rightcolumnlength}
+  \textsc{#1}    & \textbf{#3} \\
+  \textsc{#2}    & \begin{minipage}[t]{\rightcolumnlength}
                     \vspace{-3.5mm}
   				\textcolor{verydarkgray}{#4}
                    \end{minipage}	\\
                    }
 
+\newcommand\outreachlink[5]{
+  \textsc{#1}    & \textbf{#3} \hfill \footnotesize{#4} \\
+  \textsc{#2}    & \begin{minipage}[t]{\rightcolumnlength}
+                    \vspace{-3.5mm}
+  				\textcolor{verydarkgray}{#5}
+                   \end{minipage}	\\
+                   }
+
 \newcommand\teaching[5]{
   \textsc{#1}    & \textbf{#2}  \\
-                 & \textit{#3,  #4} - #5
+                 & \textit{#3,  #4} \hfill #5
                    }
 
 \newcommand\publicationtags[5]{
@@ -504,6 +549,16 @@
   					         #5
                    \end{minipage}										\\
                     }
+
+\newcommand\schoollink[4]{
+  \textsc{#1}    & \textbf{#2} \hfill \footnotesize{#3}\\
+                 & \begin{minipage}[t]{\rightcolumnlength}
+                    \vspace{-3.5mm}
+  				\textcolor{verydarkgray}{#4}
+                   \end{minipage}	
+                   \\
+                   }
+
 
 % Render a consultant experience in the experiences environment
 % Usage: 
