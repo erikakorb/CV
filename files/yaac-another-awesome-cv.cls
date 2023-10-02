@@ -239,6 +239,10 @@
 % Usage: \arxiv{<issue>}
 \newcommand*{\arxiv}[1]{\sociallink{\faBook}{https://arxiv.org/abs/#1}{arxiv.org/abs/#1}}           % Book icon + URL
 
+% Render author's nasa ads link (optional)
+% Usage: \nasaads{<issue>}
+\newcommand*{\nasaads}[1]{\sociallink{\faBook}{https://ui.adsabs.harvard.edu/abs/#1}{ui.adsabs.harvard.edu/abs/#1}}           % Book icon + URL
+
 % Render author's email (optional)
 % Usage: \email{<email adress>}
 \newcommand*{\email}[1]{\sociallink{\mailSymbol}{mailto:#1}{#1}}
@@ -520,11 +524,11 @@
   \textsc{#1}    & \textbf{#2}   	\\
                 & \begin{minipage}[t]{\rightcolumnlength}
                     \begin{spacing}{1}
-                        #3
+                        #3 \hfill \textit{#4}
                     \end{spacing}
                     \smallskip
                     
-                        #4 \hfill 
+
                     \footnotesize{\foreach \n in {#5}{\cvtag{\n}}}
                     
                    \end{minipage}				
