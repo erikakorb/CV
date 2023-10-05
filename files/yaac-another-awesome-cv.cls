@@ -391,6 +391,10 @@
 \newcommand\content[2]{
   \textsc{#1}    &  #2 \\
 }
+\newcommand\supervisor[6]{
+  \textsc{#1}    &  \textbf{#2} (#3) \hfill \textsc{#4}\\
+                 & \emph{#5} \hfill \footnotesize{#6} \\
+}
 
 \newcommand\talk[5]{
   \textsc{#1}    &  \textbf{#2} \\
