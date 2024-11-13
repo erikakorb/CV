@@ -53,7 +53,7 @@
 \RequirePackage[usenames,dvipsnames]{xcolor}
 \RequirePackage{amsmath, amssymb, mathtools,bm}
 \RequirePackage{fullpage}
-\RequirePackage[margin=1.5cm]{geometry}
+\RequirePackage[margin=1.2cm]{geometry}  %1.5
 \RequirePackage{setspace}  %for spacing in minipage
 \RequirePackage{fontspec} 					                 % for loading fonts
 %\RequirePackage{fontawesome}  % fancy symbols and icons
@@ -68,6 +68,7 @@
 \RequirePackage{tikz}
 \RequirePackage[skins]{tcolorbox}
 \RequirePackage{fancyhdr}
+
 
 
 \DeclareUnicodeCharacter{00E9}{\'{e}}
@@ -143,10 +144,10 @@
 
 %New length definition
 \newlength{\rightcolumnlength}
-\setlength{\rightcolumnlength}{14.8cm}
+\setlength{\rightcolumnlength}{14.8cm}  %14.8
 
 \newlength{\leftcolumn}
-\setlength{\leftcolumn}{3.2cm}
+\setlength{\leftcolumn}{3.7cm} %3.2
 
 % Font Awesome icons aliases
 \newcommand{\mailSymbol}{\faAt}
@@ -392,7 +393,7 @@
   \textsc{#1}    &  #2 \\
 }
 \newcommand\supervisor[6]{
-  \textsc{#1}    &  \textbf{#2} (#3) \hfill \textsc{#4}\\
+  \textsc{#1}    &  \textbf{#2} #3 \hfill \textsc{#4}\\
                  & \emph{#5} \hfill \footnotesize{#6} \\
 }
 
@@ -445,6 +446,7 @@
 % Define the 'experiences' environment
 \newenvironment{experiences}{%
 \renewcommand{\arraystretch}{1.1}
+  \onehalfspacing
   \begin{longtable}{R{\leftcolumn}|E}
 }{%
   \end{longtable}
@@ -471,9 +473,20 @@
 \newcommand\experiencetags[7]{
   \textsc{#1}    & \textbf{#2}, \textbf{#3}   \\
   \textsc{#4}    & \begin{minipage}[t]{\rightcolumnlength}
-  					        #5
+  					        {\setstretch{1.0}#5}
                                 \smallskip
                                 \textcolor{verydarkgray}{#6}
+                                \smallskip
+                   \footnotesize{\foreach \n in {#7}{\cvtag{\n}}}
+                   \end{minipage} \\
+                   }
+
+\newcommand\experiencetagsend[7]{
+  \textsc{#1}    & \textbf{#2}, \textbf{#3} \hfill #6   \\
+  \textsc{#4}    & \begin{minipage}[t]{\rightcolumnlength}
+  					        {\setstretch{1.0}#5}
+                                \medskip
+                                
                    \footnotesize{\foreach \n in {#7}{\cvtag{\n}}}
                    \end{minipage} \\
                    }
@@ -488,6 +501,13 @@
                    \end{minipage} \\
                    }
 
+\newcommand\visiting[4]{
+  \textsc{#1}    & \textbf{#2} \\
+  \textsc{#4}    & \begin{minipage}[t]{\rightcolumnlength}
+                    #3
+                   \end{minipage}	\\
+                   }
+
 \newcommand\award[5]{
   \textsc{#1}    & \textbf{#2} by the \textbf{#3}  \\
   \textsc{#4}    & \begin{minipage}[t]{\rightcolumnlength}
@@ -498,8 +518,8 @@
 \newcommand\awardlink[6]{
   \textsc{#1}    & \textbf{#2} by the \textbf{#3} \hfill \footnotesize{#4}\\
   \textsc{#5}    & \begin{minipage}[t]{\rightcolumnlength}
-                    \vspace{-3.5mm}
-  				\textcolor{verydarkgray}{#6}
+                    \vspace{-4mm}
+  				{\setstretch{1.0}\textcolor{verydarkgray}{#6}}
                    \end{minipage}	\\
                    }
 
@@ -519,21 +539,29 @@
                    \end{minipage}	\\
                    }
 
-\newcommand\teaching[5]{
-  \textsc{#1}    & \textbf{#2}  \\
-                 & \textit{#3,  #4} \hfill #5
+\newcommand\teaching[6]{
+  \textsc{#1}    & \textbf{#2} \hfill #5  \\
+                 & \textit{#3,  #4} \hfill #6
+                   }
+\newcommand\teachingmulti[8]{
+  \textsc{#1}    & \textbf{#3} \hfill #6  \\
+  \textsc{#2}    & \textit{#4,  #5} \hfill #8 \\
+                 & #7 
                    }
 
-\newcommand\publicationtags[5]{
+\newcommand\publicationtags[6]{
   \textsc{#1}    & \textbf{#2}   	\\
                 & \begin{minipage}[t]{\rightcolumnlength}
                     \begin{spacing}{1}
-                        #3 \hfill \textit{#4}
+                        #3 
                     \end{spacing}
-                    \smallskip
+                    
+                    \medskip
+                    #4 - \textit{#5} \hfill  \footnotesize{\foreach \n in {#6}{\cvtag{\n}}} 
+                    
                     
 
-                    \footnotesize{\foreach \n in {#5}{\cvtag{\n}}}
+                    
                     
                    \end{minipage}				
                     }
@@ -565,6 +593,10 @@
   				\textcolor{verydarkgray}{#4}
                    \end{minipage}	
                    \\
+                   }
+
+\newcommand\schoollinknodescript[4]{
+  \textsc{#1}    & \textbf{#2} \hfill \footnotesize{#3}\\
                    }
 
 
