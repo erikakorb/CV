@@ -155,6 +155,7 @@
 \newcommand{\infoSymbol}{\faInfo}
 \newcommand{\birthSymbol}{\faBirthdayCake}
 \newcommand{\linkedinSymbol}{\faLinkedin}
+\newcommand{\orcidSymbol}{\faOrcid}
 \newcommand{\viadeoSymbol}{\faViadeo}
 \newcommand{\mobileSymbol}{\faMobilePhone}
 \newcommand{\githubSymbol}{\faGithub}
@@ -218,6 +219,10 @@
 % Render author's linked-in (optional)
 % Usage: \linkedin{<linked-in-nick>}
 \newcommand*{\linkedin}[1]{\sociallink{\linkedinSymbol}{http://www.linkedin.com/in/#1/}{#1}}
+
+% Render author's orcid-in (optional)
+% Usage: \orcid{<orcid-number>}
+\newcommand*{\orcid}[1]{\sociallink{\orcidSymbol}{https://orcid.org/#1/}{#1}}
 
 % Render author's personal website (optional)
 % Usage: \personalLink{<website-without-http://www.>}
@@ -532,12 +537,27 @@
                    }
 
 \newcommand\outreachlink[5]{
-  \textsc{#1}    & \textbf{#3} \hfill \footnotesize{#4} \\
+  \textsc{#1}    & \textbf{#3} \hfill #4 \\
   \textsc{#2}    & \begin{minipage}[t]{\rightcolumnlength}
                     \vspace{-3.5mm}
   				\textcolor{verydarkgray}{#5}
                    \end{minipage}	\\
                    }
+
+\newcommand\outreachentry[6]{
+  \textsc{#1}    & \textbf{#3}, #4 \hfill \textcolor{verydarkgray}{#5} \\
+  \textsc{#2}    & \begin{minipage}[t]{\rightcolumnlength}
+                    \vspace{-3.5mm}
+  				\textcolor{verydarkgray}{#6}
+                   \end{minipage}	\\
+                   }
+\newcommand\outreachentrynocity[5]{
+  \textsc{#1}    & \textbf{#3} \hfill \textcolor{verydarkgray}{#4} \\
+  \textsc{#2}    & \begin{minipage}[t]{\rightcolumnlength}
+                    \vspace{-3.5mm}
+  				\textcolor{verydarkgray}{#5}
+                   \end{minipage}	\\
+                   }                   
 
 \newcommand\teaching[6]{
   \textsc{#1}    & \textbf{#2} \hfill #5  \\
