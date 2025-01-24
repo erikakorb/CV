@@ -53,7 +53,7 @@
 \RequirePackage[usenames,dvipsnames]{xcolor}
 \RequirePackage{amsmath, amssymb, mathtools,bm}
 \RequirePackage{fullpage}
-\RequirePackage[margin=1.2cm]{geometry}  %1.5
+\RequirePackage[margin=1.0cm]{geometry}  %1.5
 \RequirePackage{setspace}  %for spacing in minipage
 \RequirePackage{fontspec} 					                 % for loading fonts
 %\RequirePackage{fontawesome}  % fancy symbols and icons
@@ -569,6 +569,11 @@
                  & #7 
                    }
 
+\newcommand\teachingmultinoprof[7]{
+  \textsc{#1}    & \textbf{#3} \hfill #6  \\
+  \textsc{#2}    & \textit{#4,  #5} \hfill #7 \\
+                   }                   
+
 \newcommand\publicationtags[6]{
   \textsc{#1}    & \textbf{#2}   	\\
                 & \begin{minipage}[t]{\rightcolumnlength}
@@ -609,7 +614,7 @@
 \newcommand\schoollink[4]{
   \textsc{#1}    & \textbf{#2} \hfill \footnotesize{#3}\\
                  & \begin{minipage}[t]{\rightcolumnlength}
-                    \vspace{-3.5mm}
+                    \vspace{-5mm}
   				\textcolor{verydarkgray}{#4}
                    \end{minipage}	
                    \\
