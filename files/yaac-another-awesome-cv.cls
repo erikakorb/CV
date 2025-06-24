@@ -53,7 +53,7 @@
 \RequirePackage[usenames,dvipsnames]{xcolor}
 \RequirePackage{amsmath, amssymb, mathtools,bm}
 \RequirePackage{fullpage}
-\RequirePackage[margin=1.0cm]{geometry}  %1.5
+\RequirePackage[margin=0.8cm]{geometry}  %1.5  %1.0
 \RequirePackage{setspace}  %for spacing in minipage
 \RequirePackage{fontspec} 					                 % for loading fonts
 %\RequirePackage{fontawesome}  % fancy symbols and icons
@@ -147,7 +147,7 @@
 \setlength{\rightcolumnlength}{14.8cm}  %14.8
 
 \newlength{\leftcolumn}
-\setlength{\leftcolumn}{3.7cm} %3.2
+\setlength{\leftcolumn}{3.6cm} %3.2  %3.6
 
 % Font Awesome icons aliases
 \newcommand{\mailSymbol}{\faAt}
@@ -240,6 +240,11 @@
 % Render author's gitlab (optional)
 % Usage: \gitlab{<gitlab-nick>}
 \newcommand*{\gitlab}[1]{\sociallink{\gitlabSymbol}{https://www.gitlab.com/#1}{gitlab.com/#1}}           % Gitlab icon + URL
+
+% Render author's doi (optional)
+% Usage: \doi{<issue>}
+\newcommand*{\doi}[1]{\sociallink{\faBook}{htttps://doi.org/#1}{doi.org/#1}}           % Book icon + URL
+
 
 % Render author's arxiv (optional)
 % Usage: \arxiv{<issue>}
@@ -341,7 +346,7 @@
 
 % Define the 'keywords' environment
 \newenvironment{keywords}{%
-  \renewcommand{\arraystretch}{1.1}
+  \renewcommand{\arraystretch}{1.1}   %1.1
 
   \begin{tabular}{>{}r>{}p{13cm}} 
 }{%
@@ -362,7 +367,7 @@
 
 % Define the 'contents' environment
 \newenvironment{contents}{%
-\renewcommand{\arraystretch}{1.3}
+\renewcommand{\arraystretch}{1.2}   %1.3
   \begin{longtable}{>{\raggedleft\arraybackslash}p{\leftcolumn}|p{\rightcolumnlength}}
 }{%
   \end{longtable}
@@ -370,7 +375,7 @@
 
 % Define the 'contents' environment
 \newenvironment{singlelines}{%
-\renewcommand{\arraystretch}{1.3}
+\renewcommand{\arraystretch}{1.1}  %1.3
   \begin{longtable}{>{\raggedleft\arraybackslash}p{\leftcolumn}p{\rightcolumnlength}}
 }{%
   \end{longtable}
@@ -531,7 +536,7 @@
 \newcommand\outreach[4]{
   \textsc{#1}    & \textbf{#3} \\
   \textsc{#2}    & \begin{minipage}[t]{\rightcolumnlength}
-                    \vspace{-3.5mm}
+                    \vspace{-5mm}
   				\textcolor{verydarkgray}{#4}
                    \end{minipage}	\\
                    }
@@ -539,7 +544,7 @@
 \newcommand\outreachlink[5]{
   \textsc{#1}    & \textbf{#3} \hfill #4 \\
   \textsc{#2}    & \begin{minipage}[t]{\rightcolumnlength}
-                    \vspace{-3.5mm}
+                    \vspace{-5mm}
   				\textcolor{verydarkgray}{#5}
                    \end{minipage}	\\
                    }
@@ -547,14 +552,14 @@
 \newcommand\outreachentry[6]{
   \textsc{#1}    & \textbf{#3}, #4 \hfill \textcolor{verydarkgray}{#5} \\
   \textsc{#2}    & \begin{minipage}[t]{\rightcolumnlength}
-                    \vspace{-3.5mm}
+                    \vspace{-5mm}
   				\textcolor{verydarkgray}{#6}
                    \end{minipage}	\\
                    }
 \newcommand\outreachentrynocity[5]{
   \textsc{#1}    & \textbf{#3} \hfill \textcolor{verydarkgray}{#4} \\
   \textsc{#2}    & \begin{minipage}[t]{\rightcolumnlength}
-                    \vspace{-3.5mm}
+                    \vspace{-5mm}
   				\textcolor{verydarkgray}{#5}
                    \end{minipage}	\\
                    }                   
