@@ -53,7 +53,7 @@
 \RequirePackage[usenames,dvipsnames]{xcolor}
 \RequirePackage{amsmath, amssymb, mathtools,bm}
 \RequirePackage{fullpage}
-\RequirePackage[margin=0.8cm]{geometry}  %1.5  %1.0
+\RequirePackage[margin=0.75cm]{geometry}  %1.5  %1.0 
 \RequirePackage{setspace}  %for spacing in minipage
 \RequirePackage{fontspec} 					                 % for loading fonts
 %\RequirePackage{fontawesome}  % fancy symbols and icons
@@ -119,8 +119,8 @@
 \titlespacing{\section}{0pt}{2pt}{2pt}
 
 % Configure list
-\setlist[itemize,1]{label=\faAngleRight, nosep, leftmargin=2em} 
-\setlist[itemize,2]{label=\faAngleRight, nosep, leftmargin=1.5em} 
+\setlist[itemize,1]{label=\faAngleRight, nosep, leftmargin=1em}   % 2em
+\setlist[itemize,2]{label=\faAngleRight, nosep, leftmargin=0em}   % 1.5 em
 
 % Setup Array : new column type
 \newcolumntype{R}[1]{>{\hfill}m{#1}}
@@ -144,10 +144,10 @@
 
 %New length definition
 \newlength{\rightcolumnlength}
-\setlength{\rightcolumnlength}{14.8cm}  %14.8
+\setlength{\rightcolumnlength}{16.8cm}  %14.8
 
 \newlength{\leftcolumn}
-\setlength{\leftcolumn}{3.6cm} %3.2  %3.6
+\setlength{\leftcolumn}{2.2cm} %3.2  %3.6
 
 % Font Awesome icons aliases
 \newcommand{\mailSymbol}{\faAt}
@@ -215,6 +215,10 @@
 % Render author's infos
 % Usage: \infos{<infos>}
 \newcommand*{\infos}[1]{\socialtext{\infoSymbol}{#1}}
+
+% Render author's languages
+% Usage: \lang{<lang>}
+\newcommand*{\lang}[1]{\socialtext{\faComment}{#1}}
 
 % Render author's linked-in (optional)
 % Usage: \linkedin{<linked-in-nick>}
@@ -367,7 +371,7 @@
 
 % Define the 'contents' environment
 \newenvironment{contents}{%
-\renewcommand{\arraystretch}{1.2}   %1.3
+\renewcommand{\arraystretch}{1.1}   %1.3
   \begin{longtable}{>{\raggedleft\arraybackslash}p{\leftcolumn}|p{\rightcolumnlength}}
 }{%
   \end{longtable}
@@ -407,6 +411,10 @@
                  & \emph{#5} \hfill \footnotesize{#6} \\
 }
 
+\newcommand\supervisorsingleline[4]{
+  \textsc{#1}    &  \textbf{#2} -  \emph{#3} \hfill \textsc{#4}\\
+}
+
 \newcommand\talk[5]{
   \textsc{#1}    &  \textbf{#2} \\
                  & \emph{#3}, #4  \hfill #5 \\
@@ -415,6 +423,10 @@
 \newcommand\talklink[6]{
   \textsc{#1}   &  \textbf{#2} \hfill \footnotesize{#3}\\
                 & \emph{#4}, #5  \hfill #6 \\
+}
+
+\newcommand\talksingleline[5]{
+  \textsc{#1}   &  \textbf{#2} - \emph{#3}, #4 \hfill #5\\
 }
 
 % Render a content in the contents environment
@@ -455,7 +467,7 @@
 \newcolumntype{E}{>{\raggedright\arraybackslash}p{\rightcolumnlength}}
 % Define the 'experiences' environment
 \newenvironment{experiences}{%
-\renewcommand{\arraystretch}{1.1}
+\renewcommand{\arraystretch}{0.9}    %1.1
   \onehalfspacing
   \begin{longtable}{R{\leftcolumn}|E}
 }{%
