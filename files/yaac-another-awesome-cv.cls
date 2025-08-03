@@ -147,7 +147,7 @@
 \setlength{\rightcolumnlength}{16.8cm}  %14.8
 
 \newlength{\leftcolumn}
-\setlength{\leftcolumn}{2.2cm} %3.2  %3.6
+\setlength{\leftcolumn}{2.5cm} %3.2  %3.6
 
 % Font Awesome icons aliases
 \newcommand{\mailSymbol}{\faAt}
@@ -513,6 +513,16 @@
                    \end{minipage} \\
                    }
 
+\newcommand\experiencenotags[6]{
+  \textsc{#1}    & \textbf{#2}, \textbf{#3} \hfill #6   \\
+  \textsc{#4}    & \begin{minipage}[t]{\rightcolumnlength}
+  					        {\setstretch{1.0}#5}
+                            
+                   \end{minipage} \\
+                   }
+                   
+
+
 
 \newcommand\experiencelink[7]{
   \textsc{#1}    & \textbf{#2}, \textbf{#3}  \hfill \footnotesize{#4} \\
@@ -545,6 +555,10 @@
                    \end{minipage}	\\
                    }
 
+\newcommand\review[3]{
+  \textsc{#1}    & \textbf{#2} \hfill Articles reviewed: {#3}  \\
+  }
+
 \newcommand\outreach[4]{
   \textsc{#1}    & \textbf{#3} \\
   \textsc{#2}    & \begin{minipage}[t]{\rightcolumnlength}
@@ -568,6 +582,11 @@
   				\textcolor{verydarkgray}{#6}
                    \end{minipage}	\\
                    }
+
+\newcommand\outreachentrynodescription[4]{
+  \textsc{#1}    & \textbf{#2}, #3 \hfill \textcolor{verydarkgray}{#4} \\
+                   }
+                   
 \newcommand\outreachentrynocity[5]{
   \textsc{#1}    & \textbf{#3} \hfill \textcolor{verydarkgray}{#4} \\
   \textsc{#2}    & \begin{minipage}[t]{\rightcolumnlength}
@@ -590,6 +609,17 @@
   \textsc{#1}    & \textbf{#3} \hfill #6  \\
   \textsc{#2}    & \textit{#4,  #5} \hfill #7 \\
                    }                   
+
+\newcommand\teachingmultinoprofdescription[8]{
+  \textsc{#1}    & \textbf{#3} \hfill #6  \\
+  \textsc{#2}    & \begin{minipage}[t]{\rightcolumnlength}
+                   \textit{#4,  #5} \hfill #7 \\
+                   \vspace{-4mm}
+                    \textcolor{verydarkgray}{#8}
+                   \end{minipage} 
+                   }  
+
+
 
 \newcommand\publicationtags[6]{
   \textsc{#1}    & \textbf{#2}   	\\
