@@ -247,7 +247,7 @@
 
 % Render author's doi (optional)
 % Usage: \doi{<issue>}
-\newcommand*{\doi}[1]{\sociallink{\faBook}{htttps://doi.org/#1}{doi.org/#1}}           % Book icon + URL
+\newcommand*{\doi}[1]{\sociallink{\faBook}{https://doi.org/#1}{doi.org/#1}}           % Book icon + URL
 
 
 % Render author's arxiv (optional)
