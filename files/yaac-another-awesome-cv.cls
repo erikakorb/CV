@@ -184,6 +184,7 @@
 % Render a link with its symbol
 % Usage; \sociallink{<icon>}{<label>}
 \newcommand{\sociallink}[3]{\mbox{\textcolor{symbolcolor}{#1}\hspace{0.5em}\link{#2}{#3}}}
+\newcommand*{\gitlablink}[2]{\sociallink{\gitlabSymbol}{#1}{#2}}
 
 % Define author's name
 % Usage: \name{<firstname>}{<lastname>}
@@ -533,6 +534,25 @@
                    \end{minipage} \\
                    }
 
+
+\newcommand\researchexperiencetwolinestitle[6]{
+  \textsc{#1}    & \textbf{#3}  \\
+  \textsc{#2}    & \textbf{#4} \\
+   \textsc{#6}   & \begin{minipage}[t]{\rightcolumnlength}
+                    \vspace{-3.5mm}
+  				\textcolor{verydarkgray}{#5}
+                   \end{minipage}	\\
+                   }
+
+\newcommand\researchexperience[5]{
+  \textsc{#1}    & \textbf{#3}  \\
+  \textsc{#2}    & \begin{minipage}[t]{\rightcolumnlength}
+                        {\setstretch{1.0}{#4}} \\
+                        \vspace{-5mm}
+                        \textcolor{verydarkgray}{#5}
+                   \end{minipage} \\
+                   }
+
 \newcommand\visiting[4]{
   \textsc{#1}    & \textbf{#2} \\
   \textsc{#4}    & \begin{minipage}[t]{\rightcolumnlength}
@@ -558,6 +578,11 @@
 \newcommand\review[3]{
   \textsc{#1}    & \textbf{#2} \hfill Articles reviewed: {#3}  \\
   }
+
+  \newcommand\portfolioentry[3]{
+  \textsc{#1}    & #2 \hfill #3  \\
+  }
+
 
 \newcommand\outreach[4]{
   \textsc{#1}    & \textbf{#3} \\
